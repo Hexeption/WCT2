@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "uk.co.hexeption.wct2.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "wct2.refmap.json",
+  "mixins": [
+    "MixinContainerHelper",
+    "MixinMEInventoryUpdatePacket"
+  ],
+  "minVersion": "0.8"
+}
