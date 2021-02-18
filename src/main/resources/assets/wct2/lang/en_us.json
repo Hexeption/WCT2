@@ -1,3 +1,6 @@
 {
-  "wct2.gui.wireless_crafting_term": "Terminal"
+  "wct2.gui.wireless_crafting_term": "Terminal",
+  "itemGroup.wct2": "WCT2",
+  "item.wct2.wireless_crafting_terminal": "Wireless Crafting Terminal",
+  "curios.identifier.term": "Term"
 }

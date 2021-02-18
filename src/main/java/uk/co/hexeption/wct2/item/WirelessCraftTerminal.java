@@ -16,9 +16,13 @@ import appeng.util.ConfigManager;
 import appeng.util.Platform;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import top.theillusivec4.curios.api.type.capability.ICurio;
+import top.theillusivec4.curios.common.capability.CurioItemCapability;
 import uk.co.hexeption.wct2.container.WirelessCraftingTermContainer;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -113,5 +117,16 @@ public class WirelessCraftTerminal extends AEBasePoweredItem implements IWireles
 		final CompoundNBT tag = itemStack.getOrCreateTag();
 		tag.putString("encryptionKey", s);
 		tag.putString("name", s1);
+	}
+
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT nbt) {
+		return CurioItemCapability.createProvider(new ICurio() {
+			@Override
+			public void curioTick(String identifier, int index, LivingEntity livingEntity) {
+
+			}
+
+		});
 	}
 }

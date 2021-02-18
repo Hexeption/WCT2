@@ -91,6 +91,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.4.0")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.4.0:api")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.4.0")
 }
 
 jar {

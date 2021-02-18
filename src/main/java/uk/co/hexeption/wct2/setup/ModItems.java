@@ -15,7 +15,6 @@ import net.minecraft.item.Item;
 public class ModItems {
 
 	public static final RegistryObject<Item> WIRELESS_CRAFTING_TERMINAL = Registration.ITEMS.register("wireless_crafting_terminal", () -> new WirelessCraftTerminal(new Item.Properties().group(WCT2.ITEM_GROUP).maxStackSize(1).maxDamage(50).setNoRepair()));
-	public static final RegistryObject<Item> WIRELESS_CRAFTING_TERMINAL_CREATIVE = Registration.ITEMS.register("wireless_crafting_terminal_creative", () -> new WirelessCraftTerminal(new Item.Properties().group(WCT2.ITEM_GROUP).maxStackSize(1).maxDamage(50).setNoRepair()));
 
 	static void register() {
 	}

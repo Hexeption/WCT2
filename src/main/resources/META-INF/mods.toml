@@ -20,3 +20,10 @@ mandatory = true
 versionRange = "[1.16.5,1.17)"
 ordering = "NONE"
 side = "BOTH"
+[[dependencies.wct2]]
+modId = "curios"
+mandatory = true
+ordering = "AFTER"
+versionRange = "[1.16.5-4.0.3.0,)"
+side = "BOTH"
+
