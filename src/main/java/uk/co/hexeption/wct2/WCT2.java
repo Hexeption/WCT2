@@ -17,9 +17,12 @@ import org.apache.logging.log4j.Logger;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 import uk.co.hexeption.wct2.client.ClientEvents;
+import uk.co.hexeption.wct2.item.WirelessCraftTerminal;
+import uk.co.hexeption.wct2.network.NetworkHandler;
 import uk.co.hexeption.wct2.setup.ModItems;
 import uk.co.hexeption.wct2.setup.Registration;
 
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -64,5 +67,23 @@ public class WCT2 {
 	@SubscribeEvent
 	public void commonSetup(FMLCommonSetupEvent event) {
 		Api.instance().registries().wireless().registerWirelessHandler((IWirelessTermHandler) ModItems.WIRELESS_CRAFTING_TERMINAL.get());
+		NetworkHandler.init();
 	}
+
+	public static ItemStack getTermFromBothSlots(PlayerEntity entity) {
+		ItemStack term = CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() instanceof WirelessCraftTerminal, entity)
+				.map(stringIntegerItemStackImmutableTriple -> stringIntegerItemStackImmutableTriple.right).orElse(ItemStack.EMPTY);
+		if (term == ItemStack.EMPTY) {
+			int invSize = entity.inventory.getSizeInventory();
+
+			for (int i = 0; i < invSize; ++i) {
+				if (entity.inventory.getStackInSlot(i).getItem() instanceof WirelessCraftTerminal) {
+					return entity.inventory.getStackInSlot(i);
+
+				}
+			}
+		}
+		return term;
+	}
+
 }

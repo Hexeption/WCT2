@@ -5,7 +5,9 @@
   "refmap": "wct2.refmap.json",
   "mixins": [
     "MixinContainerHelper",
-    "MixinMEInventoryUpdatePacket"
+    "MixinContainerLocator",
+    "MixinMEInventoryUpdatePacket",
+    "MixinMEPortableCellContainer"
   ],
   "minVersion": "0.8"
 }

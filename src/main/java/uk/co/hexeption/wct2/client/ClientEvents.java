@@ -7,6 +7,8 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 import uk.co.hexeption.wct2.WCT2;
+import uk.co.hexeption.wct2.network.MessageOpenGui;
+import uk.co.hexeption.wct2.network.NetworkHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -33,22 +35,21 @@ public class ClientEvents {
 	public static void handleKeys(TickEvent.ClientTickEvent ev) {
 		Minecraft mc = Minecraft.getInstance();
 
-		// TODO: 18/02/2021 Finish
-//		if (mc.currentScreen == null) {
-//			boolean isKeyDown = OPEN_WIRELESS_CRAFTING_TERMINAL.isKeyDown();
-//			if (isKeyDown && !menuDown) {
-//				while (OPEN_WIRELESS_CRAFTING_TERMINAL.isPressed()) {
-//					if (mc.currentScreen == null) {
-//
-//						ContainerOpener.openContainer(WirelessCraftingTermContainer.TYPE, mc.player, ContainerLocator.forHand(mc.player, mc.player.getActiveHand()));
-//					}
-//				}
-//			}
-//			menuDown = isKeyDown;
-//		} else {
-//			menuDown = true;
-//		}
+		if (mc.currentScreen == null) {
+			boolean isKeyDown = OPEN_WIRELESS_CRAFTING_TERMINAL.isKeyDown();
+			if (isKeyDown && !menuDown) {
+				while (OPEN_WIRELESS_CRAFTING_TERMINAL.isPressed()) {
+					if (mc.currentScreen == null) {
+						NetworkHandler.INSTANCE.sendToServer(new MessageOpenGui());
+					}
+				}
+			}
+			menuDown = isKeyDown;
+		} else {
+			menuDown = true;
+		}
 
 	}
+
 
 }
